@@ -3,16 +3,13 @@
  * @version: 
  * @Date: 2020-12-07 17:11:40
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-07 18:01:17
+ * @LastEditTime: 2020-12-07 18:09:48
  * @Descripttion: 
  */
 import 'dart:convert';
 
 import 'package:flutter_demo/Support/event_bus.dart';
-
-// import 'package:MiaoZhangFlutter/Utility/event_bus.dart';
-// import 'package:MiaoZhangFlutter/global.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_demo/global.dart';
 
 const String EventUserLogin = 'EventUserLogin';
 const String EventUserLogout = 'EventUserLogout';
@@ -42,13 +39,13 @@ class UserManager {
   void saveUser() async {
     // SharedPreferences preferences = await SharedPreferences.getInstance();
     var data = json.encode(user);
-    // preferences.setString("user", data);
+    preferences.setString("user", data);
   }
 
   logout() {
     this.user = null;
     // SharedPreferences preferences = await SharedPreferences.getInstance();
-    // preferences.remove("user");
+    preferences.remove("user");
     eventBus.emit(EventUserLogout);
   }
 
@@ -58,10 +55,10 @@ class UserManager {
 
   loadUserFormLocal() {
     // SharedPreferences preferences = await SharedPreferences.getInstance();
-    // String userJson = preferences.getString("user");
-    // if (userJson != null) {
-    //   user = User.fromJson(json.decode(userJson));
-    // }
+    String userJson = preferences.getString("user");
+    if (userJson != null) {
+      user = User.fromJson(json.decode(userJson));
+    }
   }
 }
 

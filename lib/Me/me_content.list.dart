@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-07 15:49:11
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-07 17:58:36
+ * @LastEditTime: 2020-12-07 18:20:02
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -34,6 +34,13 @@ class _MJContentListState extends State<MJContentList> {
     eventBus.on(EventUserLogout, (arg) {
       setState(() {});
     });
+  }
+
+  @override
+  void dispose() {
+    eventBus.off(EventUserLogin);
+    eventBus.off(EventUserLogout);
+    super.dispose();
   }
 
   @override
