@@ -3,11 +3,11 @@
  * @version: 
  * @Date: 2020-12-07 09:49:15
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-07 15:09:03
+ * @LastEditTime: 2020-12-07 17:52:27
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/main_routes.dart';
+import 'package:flutter_demo/Support/mj_routes.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: MainRouter.initialRoute,
-      routes: MainRouter.routes,
+      initialRoute: MJRouter.initialRoute,
+      routes: MJRouter.routes,
       // home: MainScreenPage(),
     );
   }

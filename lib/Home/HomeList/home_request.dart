@@ -1,3 +1,11 @@
+/*
+ * @Author: lin minjing
+ * @version: 
+ * @Date: 2020-12-07 09:49:15
+ * @LastEditors: lin minjing
+ * @LastEditTime: 2020-12-07 17:32:13
+ * @Descripttion: 
+ */
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
@@ -10,7 +18,7 @@ class HomeRequest {
     // final result = await DBHttpRquest.request(movieUrl);
     // final subjects = result["subject_collection_items"];
 
-    String jsonString = await rootBundle.loadString("assets/movies.json");
+    String jsonString = await rootBundle.loadString("mock/movies.json");
     final jsonResult = json.decode(jsonString);
     final items = jsonResult["subject_collection_items"];
 
