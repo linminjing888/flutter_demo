@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/Home/dashed_line.dart';
-import 'package:flutter_demo/Home/home_model.dart';
-import 'package:flutter_demo/Home/star_rating.dart';
+import 'package:flutter_demo/Widgets/Circle.dart';
+import 'package:flutter_demo/Widgets/dashed_line.dart';
+import 'package:flutter_demo/Home/HomeList/home_model.dart';
+import 'package:flutter_demo/Widgets/star_rating.dart';
 
-class MJMovieWidget extends StatelessWidget {
+class MovieWidget extends StatelessWidget {
   final MovieItem movie;
-  MJMovieWidget(this.movie);
+  MovieWidget(this.movie);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("222");
+        print("${movie.rank}");
       },
       child: Container(
         padding: EdgeInsets.all(10),
@@ -21,55 +22,26 @@ class MJMovieWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            buildHeader(),
+            _buildImage(context),
             SizedBox(
               height: 6,
             ),
-            buildImage(context),
+            _buildContent(),
             SizedBox(
               height: 6,
             ),
-            buildContent(),
-            SizedBox(
-              height: 6,
-            ),
-            buildContentDes(),
+            _buildContentDes(),
           ],
         ),
       ),
     );
   }
 
-  Widget buildHeader() {
-    return Container(
-      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-      decoration: BoxDecoration(
-          color: Colors.yellow, borderRadius: BorderRadius.circular(3)),
-      child: Text(
-        "No.${movie.rank}",
-        style: TextStyle(fontSize: 18, color: Colors.red),
-      ),
-    );
-  }
-
-  Widget buildImage(BuildContext context) {
+  Widget _buildImage(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        Container(
-          width: 100,
-          height: 150,
-          decoration: BoxDecoration(
-            border: Border.all(width: 1.0, color: Colors.grey),
-            borderRadius: BorderRadius.circular(5),
-            image: DecorationImage(
-              image: NetworkImage(
-                movie.imageUrl,
-              ),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
+        _buildImageLeft(),
         SizedBox(width: 8),
         ClipRRect(
           borderRadius: BorderRadius.circular(5),
@@ -84,34 +56,63 @@ class MJMovieWidget extends StatelessWidget {
     );
   }
 
-  Widget buildContent() {
+  Widget _buildImageLeft() {
+    return Stack(
+      children: [
+        Container(
+          width: 100,
+          height: 150,
+          decoration: BoxDecoration(
+            border: Border.all(width: 1.0, color: Colors.grey),
+            borderRadius: BorderRadius.circular(5),
+            image: DecorationImage(
+              image: NetworkImage(
+                movie.imageUrl,
+              ),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        MJCircle(
+          radius: 10,
+          color: Colors.red[400],
+          child: Text(
+            "${movie.rank}",
+            style: TextStyle(color: Colors.white, fontSize: 12),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildContent() {
     return Container(
       child: Row(
         children: <Widget>[
-          buildContentInfo(),
+          _buildContentInfo(),
           SizedBox(
             width: 8,
           ),
-          buildDashedLine(),
+          _buildDashedLine(),
           SizedBox(
             width: 8,
           ),
-          buildContentLove(),
+          _buildContentLove(),
         ],
       ),
     );
   }
 
-  Widget buildContentInfo() {
+  Widget _buildContentInfo() {
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          buildContentTitle(),
+          _buildContentTitle(),
           SizedBox(
             height: 6,
           ),
-          buildContentRating(),
+          _buildContentRating(),
           SizedBox(
             height: 6,
           ),
@@ -121,12 +122,13 @@ class MJMovieWidget extends StatelessWidget {
     );
   }
 
-  Widget buildContentTitle() {
+  Widget _buildContentTitle() {
     return Row(
       children: <Widget>[
         Icon(
           Icons.check_circle_outline,
           color: Colors.red,
+          size: 22,
         ),
         SizedBox(
           width: 6,
@@ -139,7 +141,7 @@ class MJMovieWidget extends StatelessWidget {
     );
   }
 
-  Widget buildContentRating() {
+  Widget _buildContentRating() {
     return Container(
       width: 100,
       child: MJStarRating(
@@ -149,37 +151,40 @@ class MJMovieWidget extends StatelessWidget {
     );
   }
 
-  Widget buildDashedLine() {
+  Widget _buildDashedLine() {
     return Container(
-      // height: 100,
+      height: 80,
       child: MJDashedLine(
         lineAxis: Axis.vertical,
         lineWidth: 1,
-        lineHeight: 5,
+        lineHeight: 3,
       ),
     );
   }
 
-  Widget buildContentLove() {
-    return Container(
-      // height: 100,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Image.asset(
-            "assets/images/wish.png",
-            width: 30,
-          ),
-          Text(
-            "想看",
-            style: TextStyle(color: Color.fromARGB(255, 235, 170, 60)),
-          )
-        ],
+  Widget _buildContentLove() {
+    return GestureDetector(
+      onTap: () => print("love"),
+      child: Container(
+        // height: 100,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset(
+              "assets/images/wish.png",
+              width: 30,
+            ),
+            Text(
+              "想看",
+              style: TextStyle(color: Color.fromARGB(255, 235, 170, 60)),
+            )
+          ],
+        ),
       ),
     );
   }
 
-  Widget buildContentDes() {
+  Widget _buildContentDes() {
     return Container(
         width: double.infinity,
         padding: EdgeInsets.all(8),

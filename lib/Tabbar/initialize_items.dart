@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/Group/group_page.dart';
 import 'package:flutter_demo/Tabbar/bottom_bar_item.dart';
-import 'package:flutter_demo/Home/home_page.dart';
+import 'package:flutter_demo/Home/HomeList/home_page.dart';
 
 List<MJBottomBarItem> items = [
   MJBottomBarItem("首页", "home"),

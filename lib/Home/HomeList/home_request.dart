@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_demo/Home/home_model.dart';
+import 'package:flutter_demo/Home/HomeList/home_model.dart';
 
 class HomeRequest {
   static Future<List<MovieItem>> requestMovieList() async {

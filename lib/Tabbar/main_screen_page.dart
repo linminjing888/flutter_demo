@@ -1,7 +1,17 @@
+/*
+ * @Author: lin minjing
+ * @version: 
+ * @Date: 2020-12-07 09:49:15
+ * @LastEditors: lin minjing
+ * @LastEditTime: 2020-12-07 15:06:17
+ * @Descripttion: 
+ */
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/Tabbar/initialize_items.dart';
 
 class MainScreenPage extends StatefulWidget {
+  static const String routeName = "/main";
+
   @override
   _MainScreenPageState createState() => _MainScreenPageState();
 }
