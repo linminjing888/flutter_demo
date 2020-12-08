@@ -3,14 +3,22 @@
  * @version: 
  * @Date: 2020-12-07 09:49:15
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-07 18:20:14
+ * @LastEditTime: 2020-12-08 12:18:11
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/Me/Theme/theme_color_model.dart';
 import 'package:flutter_demo/Support/mj_routes.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  // Provider
+  runApp(ChangeNotifierProvider(
+    create: (context) {
+      return ThemeColorModel();
+    },
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,8 +29,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        // Provider
+        primarySwatch: context.watch<ThemeColorModel>().color,
+        // Provider.of<ThemeColorModel>(context).color,
+        // 去除全局水波纹效果
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
       ),
       initialRoute: MJRouter.initialRoute,
       routes: MJRouter.routes,

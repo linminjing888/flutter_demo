@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-07 09:49:15
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-07 15:17:57
+ * @LastEditTime: 2020-12-08 15:05:31
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -18,6 +18,7 @@ class MJHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("首页"),
+        automaticallyImplyLeading: false, // 隐藏返回按钮
         actions: [
           IconButton(
             icon: Icon(Icons.search),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MJBottomBarItem extends BottomNavigationBarItem {
-  MJBottomBarItem(String title, String icon)
+  MJBottomBarItem(String title, String icon, Color selectColor)
       : super(
           label: title,
           icon: Image.asset(
@@ -13,6 +13,7 @@ class MJBottomBarItem extends BottomNavigationBarItem {
             "assets/images/tabbar/${icon}_active.png",
             width: 32,
             gaplessPlayback: true,
+            color: selectColor,
           ),
         );
 }

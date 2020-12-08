@@ -128,7 +128,7 @@ class _MJLoginPageState extends State<MJLoginPage> {
   Widget _buildLogin() {
     return Container(
       decoration: BoxDecoration(
-        color: MJColor.blue,
+        color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(5),
       ),
       height: 45,
@@ -153,7 +153,7 @@ class _MJLoginPageState extends State<MJLoginPage> {
             child: Text(
               "忘记密码？",
               style: TextStyle(
-                color: Colors.green[200],
+                color: Theme.of(context).primaryColor,
               ),
             )),
         FlatButton(
@@ -163,7 +163,9 @@ class _MJLoginPageState extends State<MJLoginPage> {
             padding: EdgeInsets.only(left: 50),
             child: Text(
               "注册",
-              style: TextStyle(color: MJColor.blue),
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+              ),
             ))
       ],
     );

@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-07 15:49:11
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-07 17:45:06
+ * @LastEditTime: 2020-12-08 16:06:48
  * @Descripttion: 
  */
 import 'package:cached_network_image/cached_network_image.dart';
@@ -36,14 +36,14 @@ class MJMeHeader extends StatelessWidget {
               radius: 40,
               backgroundImage: user?.avatarUrl != null
                   ? CachedNetworkImageProvider(user.avatarUrl)
-                  : AssetImage("images/default_icon.png"),
+                  : AssetImage("assets/images/default_icon.png"),
             ),
             // Image.asset(
             //   "images/default_icon.png",
             //   width: 80,
             // ),
             SizedBox(
-              width: 10,
+              width: 15,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +51,7 @@ class MJMeHeader extends StatelessWidget {
               children: <Widget>[
                 Text(
                   user != null ? user.nickname : "登录",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 SizedBox(
                   height: 8,

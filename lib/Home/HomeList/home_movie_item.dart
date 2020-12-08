@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/Widgets/Circle.dart';
 import 'package:flutter_demo/Widgets/dashed_line.dart';
@@ -6,7 +7,8 @@ import 'package:flutter_demo/Widgets/star_rating.dart';
 
 class MovieWidget extends StatelessWidget {
   final MovieItem movie;
-  MovieWidget(this.movie);
+  final Color themeColor;
+  MovieWidget(this.movie, this.themeColor);
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +46,13 @@ class MovieWidget extends StatelessWidget {
         _buildImageLeft(),
         SizedBox(width: 8),
         ClipRRect(
-          borderRadius: BorderRadius.circular(5),
-          child: Image.network(
-            movie.photos[0],
-            width: MediaQuery.of(context).size.width - 28 - 100,
-            height: 150,
-            fit: BoxFit.cover,
-          ),
-        ),
+            borderRadius: BorderRadius.circular(5),
+            child: Image(
+              image: CachedNetworkImageProvider(movie.photos[0]),
+              width: MediaQuery.of(context).size.width - 28 - 100,
+              height: 150,
+              fit: BoxFit.cover,
+            )),
       ],
     );
   }
@@ -66,16 +67,14 @@ class MovieWidget extends StatelessWidget {
             border: Border.all(width: 1.0, color: Colors.grey),
             borderRadius: BorderRadius.circular(5),
             image: DecorationImage(
-              image: NetworkImage(
-                movie.imageUrl,
-              ),
+              image: CachedNetworkImageProvider(movie.imageUrl),
               fit: BoxFit.cover,
             ),
           ),
         ),
         MJCircle(
           radius: 10,
-          color: Colors.red[400],
+          color: themeColor,
           child: Text(
             "${movie.rank}",
             style: TextStyle(color: Colors.white, fontSize: 12),
@@ -127,7 +126,7 @@ class MovieWidget extends StatelessWidget {
       children: <Widget>[
         Icon(
           Icons.check_circle_outline,
-          color: Colors.red,
+          color: themeColor,
           size: 22,
         ),
         SizedBox(
@@ -147,6 +146,7 @@ class MovieWidget extends StatelessWidget {
       child: MJStarRating(
         rating: double.parse(movie.rating),
         size: 20,
+        selectedColor: themeColor,
       ),
     );
   }
@@ -173,10 +173,11 @@ class MovieWidget extends StatelessWidget {
             Image.asset(
               "assets/images/wish.png",
               width: 30,
+              color: themeColor,
             ),
             Text(
               "想看",
-              style: TextStyle(color: Color.fromARGB(255, 235, 170, 60)),
+              style: TextStyle(color: themeColor),
             )
           ],
         ),

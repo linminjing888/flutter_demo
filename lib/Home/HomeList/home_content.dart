@@ -34,7 +34,7 @@ class _HomeContentState extends State<HomeContent> {
     return ListView.builder(
       itemCount: movies.length,
       itemBuilder: (context, index) {
-        return MovieWidget(movies[index]);
+        return MovieWidget(movies[index], Theme.of(context).primaryColor);
       },
     );
   }

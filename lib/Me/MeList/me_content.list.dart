@@ -3,13 +3,14 @@
  * @version: 
  * @Date: 2020-12-07 15:49:11
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-07 18:20:02
+ * @LastEditTime: 2020-12-08 15:56:35
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/Me/initialize_me_data.dart';
-import 'package:flutter_demo/Me/me_content_item.dart';
-import 'package:flutter_demo/Me/me_header.dart';
+import 'package:flutter_demo/Me/MeList/initialize_me_data.dart';
+import 'package:flutter_demo/Me/MeList/me_content_item.dart';
+import 'package:flutter_demo/Me/MeList/me_header.dart';
+import 'package:flutter_demo/Me/Theme/theme_color_setting.dart';
 import 'package:flutter_demo/Me/share_page.dart';
 import 'package:flutter_demo/Support/event_bus.dart';
 import 'package:flutter_demo/Support/mj_toast.dart';
@@ -66,7 +67,7 @@ class _MJContentListState extends State<MJContentList> {
           if (index == 0) {
             return MJMeHeader();
           } else {
-            if (index == 2) {
+            if (index == 3) {
               subTitle = "已开启";
             } else {
               subTitle = "";
@@ -105,7 +106,9 @@ class _MJContentListState extends State<MJContentList> {
 
   void didSelectedItemAction(int index) {
     print("点击了：$index");
-    if (index == 4) {
+    if (index == 3) {
+      Navigator.of(context).pushNamed(MJThemeColorPage.routeName);
+    } else if (index == 4) {
       Navigator.of(context).pushNamed(MJSharePage.routeName);
     }
   }

@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-07 15:49:11
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-07 16:44:05
+ * @LastEditTime: 2020-12-08 10:35:52
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -50,10 +50,10 @@ class MJMeContentItem extends StatelessWidget {
             icon,
             width: 25,
           ),
-          SizedBox(width: 10),
+          SizedBox(width: 15),
           Text(
             title,
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 18),
           ),
           Expanded(child: Container()),
           Text(subTitle),
