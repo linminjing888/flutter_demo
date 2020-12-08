@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-07 15:49:11
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-08 16:59:35
+ * @LastEditTime: 2020-12-08 17:53:44
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -12,6 +12,7 @@ import 'package:flutter_demo/Me/MeList/me_content_item.dart';
 import 'package:flutter_demo/Me/MeList/me_header.dart';
 import 'package:flutter_demo/Me/Theme/theme_color_setting.dart';
 import 'package:flutter_demo/Me/share_page.dart';
+import 'package:flutter_demo/Me/web_page.dart';
 import 'package:flutter_demo/Support/event_bus.dart';
 import 'package:flutter_demo/Support/mj_toast.dart';
 import 'package:flutter_demo/Support/user_manager.dart';
@@ -98,12 +99,13 @@ class _MJContentListState extends State<MJContentList> {
                     ),
                   ));
             } else {
+              final title = meTitleList[index - 1];
               return MJMeContentItem(
                 icon: "assets/images/${meImgList[index - 1]}",
-                title: meTitleList[index - 1],
+                title: title,
                 subTitle: subTitle,
                 onPressed: () {
-                  didSelectedItemAction(index);
+                  didSelectedItemAction(index, title);
                 },
               );
             }
@@ -113,12 +115,21 @@ class _MJContentListState extends State<MJContentList> {
     );
   }
 
-  void didSelectedItemAction(int index) {
+  void didSelectedItemAction(int index, String title) {
     print("点击了：$index");
     if (index == 1) {
       Navigator.of(context).pushNamed(MJThemeColorPage.routeName);
     } else if (index == 2) {
       Navigator.of(context).pushNamed(MJSharePage.routeName);
+    } else if (index == 3) {
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) {
+          return MJWebPage(
+            url: "https://github.com/linminjing888/flutter_demo",
+            title: title,
+          );
+        },
+      ));
     }
   }
 }

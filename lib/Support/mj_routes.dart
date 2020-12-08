@@ -3,11 +3,12 @@
  * @version: 
  * @Date: 2020-12-07 15:01:24
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-08 15:02:09
+ * @LastEditTime: 2020-12-08 17:28:56
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/Home/SearchList/app_search_page.dart';
+import 'package:flutter_demo/Me/web_page.dart';
 import 'package:flutter_demo/splash_screen.dart';
 import 'package:flutter_demo/Me/Theme/theme_color_setting.dart';
 import 'package:flutter_demo/Me/login_page.dart';
@@ -28,4 +29,17 @@ class MJRouter {
   };
 
   static final String initialRoute = SplashScreen.routeName;
+
+  // 路由传参（多个值时，暂未找到方法）
+  // static final RouteFactory onGenerateRoute = (setting) {
+  //   if (setting.name == MJWebPage.routeName) {
+  //     return MaterialPageRoute(
+  //       builder: (context) {
+  //         return MJWebPage(setting.arguments);
+  //       },
+  //     );
+  //   }
+  //   return null;
+  // };
+
 }

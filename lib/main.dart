@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: MJRouter.initialRoute,
       routes: MJRouter.routes,
+      // onGenerateRoute: MJRouter.onGenerateRoute,
       supportedLocales: S.delegate.supportedLocales,
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,

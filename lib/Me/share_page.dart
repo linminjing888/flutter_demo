@@ -3,13 +3,14 @@
  * @version: 
  * @Date: 2020-12-07 15:49:11
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-08 10:21:44
+ * @LastEditTime: 2020-12-08 17:11:22
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/Support/mj_color.dart';
 import 'package:flutter_demo/Support/mj_screen.dart';
 import 'package:flutter_demo/Support/mj_toast.dart';
+import 'package:flutter_demo/generated/l10n.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class MJSharePage extends StatelessWidget {
@@ -23,7 +24,7 @@ class MJSharePage extends StatelessWidget {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("分享有礼"),
+          title: Text(S.of(context).share_gift),
           iconTheme: IconThemeData(color: Colors.white),
           elevation: 0, // 隐藏底部分割线
         ),
