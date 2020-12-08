@@ -3,12 +3,13 @@
  * @version: 
  * @Date: 2020-12-07 15:49:11
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-08 16:06:48
+ * @LastEditTime: 2020-12-08 16:49:51
  * @Descripttion: 
  */
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/Support/user_manager.dart';
+import 'package:flutter_demo/generated/l10n.dart';
 
 class MJMeHeader extends StatelessWidget {
   @override
@@ -50,13 +51,13 @@ class MJMeHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  user != null ? user.nickname : "登录",
+                  user != null ? user.nickname : S.of(context).login,
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 SizedBox(
                   height: 8,
                 ),
-                Text("新布匹", style: TextStyle(color: Colors.white)),
+                Text(S.of(context).des, style: TextStyle(color: Colors.white)),
               ],
             ),
             Expanded(child: Container()),

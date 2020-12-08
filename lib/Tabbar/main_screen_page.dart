@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-07 09:49:15
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-08 15:37:14
+ * @LastEditTime: 2020-12-08 16:58:49
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -11,6 +11,7 @@ import 'package:flutter_demo/Me/Theme/cons.dart';
 import 'package:flutter_demo/Me/Theme/theme_color_model.dart';
 import 'package:flutter_demo/Tabbar/bottom_bar_item.dart';
 import 'package:flutter_demo/Tabbar/initialize_items.dart';
+import 'package:flutter_demo/generated/l10n.dart';
 import 'package:flutter_demo/global.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -52,6 +53,14 @@ class _MainScreenPageState extends State<MainScreenPage> {
       return Container();
     }
 
+    Color themeColor = Theme.of(context).primaryColor;
+    List<MJBottomBarItem> items = [
+      MJBottomBarItem(S.of(context).home, "home", themeColor),
+      MJBottomBarItem(S.of(context).group, "group", themeColor),
+      MJBottomBarItem(S.of(context).fair, "mall", themeColor),
+      MJBottomBarItem(S.of(context).My, "profile", themeColor),
+    ];
+
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
@@ -62,7 +71,7 @@ class _MainScreenPageState extends State<MainScreenPage> {
         unselectedFontSize: 14,
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
-        items: items(context),
+        items: items,
         onTap: (value) {
           setState(() {
             _currentIndex = value;
@@ -70,15 +79,5 @@ class _MainScreenPageState extends State<MainScreenPage> {
         },
       ),
     );
-  }
-
-  List<MJBottomBarItem> items(BuildContext context) {
-    Color themeColor = Theme.of(context).primaryColor;
-    return [
-      MJBottomBarItem("首页", "home", themeColor),
-      MJBottomBarItem("小组", "group", themeColor),
-      MJBottomBarItem("市集", "mall", themeColor),
-      MJBottomBarItem("我的", "profile", themeColor),
-    ];
   }
 }

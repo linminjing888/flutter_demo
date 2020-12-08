@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-07 15:49:11
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-08 15:56:35
+ * @LastEditTime: 2020-12-08 16:59:35
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -15,6 +15,7 @@ import 'package:flutter_demo/Me/share_page.dart';
 import 'package:flutter_demo/Support/event_bus.dart';
 import 'package:flutter_demo/Support/mj_toast.dart';
 import 'package:flutter_demo/Support/user_manager.dart';
+import 'package:flutter_demo/generated/l10n.dart';
 
 class MJContentList extends StatefulWidget {
   @override
@@ -47,6 +48,14 @@ class _MJContentListState extends State<MJContentList> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
+    List<String> meTitleList = [
+      S.of(context).theme_setting,
+      S.of(context).share_gift,
+      S.of(context).help_doc,
+      S.of(context).about_us,
+      S.of(context).language,
+    ];
+
     if (UserManager.instance.isLogin) {
       setState(() {
         if (meTitleList.contains("退出登录")) {
@@ -67,12 +76,12 @@ class _MJContentListState extends State<MJContentList> {
           if (index == 0) {
             return MJMeHeader();
           } else {
-            if (index == 3) {
-              subTitle = "已开启";
+            if (index == 1) {
+              subTitle = S.of(context).open;
             } else {
               subTitle = "";
             }
-            if (index == 8) {
+            if (index == 6) {
               return GestureDetector(
                   onTap: () {
                     UserManager.instance.logout();
@@ -106,9 +115,9 @@ class _MJContentListState extends State<MJContentList> {
 
   void didSelectedItemAction(int index) {
     print("点击了：$index");
-    if (index == 3) {
+    if (index == 1) {
       Navigator.of(context).pushNamed(MJThemeColorPage.routeName);
-    } else if (index == 4) {
+    } else if (index == 2) {
       Navigator.of(context).pushNamed(MJSharePage.routeName);
     }
   }

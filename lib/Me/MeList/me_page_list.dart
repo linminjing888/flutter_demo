@@ -3,10 +3,11 @@
  * @version: 
  * @Date: 2020-12-07 15:49:11
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-07 16:07:40
+ * @LastEditTime: 2020-12-08 16:37:02
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/generated/l10n.dart';
 import 'me_content.list.dart';
 
 class MJMePage extends StatelessWidget {
@@ -14,7 +15,7 @@ class MJMePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("我的"),
+        title: Text(S.of(context).My),
         elevation: 0,
         leading: IconButton(
           icon: Image.asset(

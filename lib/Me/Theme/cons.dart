@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-08 10:26:28
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-08 14:52:31
+ * @LastEditTime: 2020-12-08 16:46:03
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -17,6 +17,8 @@ class Cons {
     Colors.blue: "蓝",
     Colors.indigo: "靛",
     Colors.purple: "紫",
+    Colors.pink: "粉",
+    Colors.brown: "棕",
     MaterialColor(0xff2D2D2D, <int, Color>{
       50: Color(0xFF8A8A8A),
       100: Color(0xFF747474),

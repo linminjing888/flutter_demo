@@ -3,13 +3,16 @@
  * @version: 
  * @Date: 2020-12-07 09:49:15
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-08 12:18:11
+ * @LastEditTime: 2020-12-08 16:28:08
  * @Descripttion: 
  */
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/Me/Theme/theme_color_model.dart';
 import 'package:flutter_demo/Support/mj_routes.dart';
+import 'package:flutter_demo/generated/l10n.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   // Provider
@@ -38,6 +41,12 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: MJRouter.initialRoute,
       routes: MJRouter.routes,
+      supportedLocales: S.delegate.supportedLocales,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        S.delegate,
+      ],
       // home: MainScreenPage(),
     );
   }
