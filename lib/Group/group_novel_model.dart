@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_demo/Support/mj_color.dart';
+
 class Novel {
   String bid;
   String bookname; // 图书名

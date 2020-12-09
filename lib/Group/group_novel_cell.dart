@@ -9,6 +9,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/Group/group_novel_image.dart';
 import 'package:flutter_demo/Group/group_novel_model.dart';
+import 'package:flutter_demo/Support/mj_color.dart';
 
 class NovelBookCell extends StatelessWidget {
   final Novel novel;
@@ -33,14 +34,18 @@ class NovelBookCell extends StatelessWidget {
             SizedBox(
               width: 15,
             ),
-            buildRightInfo(),
+            buildRightInfo(context),
           ],
         ),
       ),
     );
   }
 
-  Widget buildRightInfo() {
+  Widget buildRightInfo(BuildContext context) {
+    Color statColor = Theme.of(context).primaryColor;
+    if (novel.statName == '连载') {
+      statColor = MJColor.darkGray;
+    }
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,13 +68,13 @@ class NovelBookCell extends StatelessWidget {
           Row(
             children: [
               Text(
-                novel.author,
+                novel.authorName,
                 style: TextStyle(fontSize: 14, color: Colors.black),
               ),
               Expanded(child: Container()),
-              // buildTagView(novel.status, novel.statusColor()),
-              // SizedBox(width: 5),
-              // buildTagView(novel.type, MJColor.darkGray),
+              buildTagView(novel.statName, statColor),
+              SizedBox(width: 5),
+              buildTagView(novel.className, MJColor.darkGray),
             ],
           )
         ],

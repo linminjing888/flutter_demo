@@ -6,12 +6,10 @@
  * @LastEditTime: 2020-12-09 18:09:10
  * @Descripttion: 
  */
-import 'package:MiaoZhangFlutter/App/mj_color.dart';
-import 'package:MiaoZhangFlutter/Data/Views/data_book_cell.dart';
-import 'package:MiaoZhangFlutter/Data/Views/data_book_section_view.dart';
-import 'package:MiaoZhangFlutter/Data/Model/data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/Group/group_model.dart';
+import 'package:flutter_demo/Group/group_novel_cell.dart';
+import 'package:flutter_demo/Support/mj_color.dart';
 
 class NovelNormalView extends StatelessWidget {
   final DataModel cardInfo;
@@ -27,7 +25,7 @@ class NovelNormalView extends StatelessWidget {
     });
     children.add(Container(
       height: 10,
-      color: Color(0xFFF5F5F5),
+      color: MJColor.paper,
     ));
 
     return Container(
