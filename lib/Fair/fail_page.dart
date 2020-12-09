@@ -3,11 +3,13 @@
  * @version: 
  * @Date: 2020-12-08 16:38:39
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-09 11:38:17
+ * @LastEditTime: 2020-12-09 15:03:21
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_demo/Fair/fail_detail_list.dart';
+import 'package:flutter_demo/Fair/fail_page_header.dart';
 import 'package:flutter_demo/Support/mj_screen.dart';
 import 'package:flutter_demo/generated/l10n.dart';
 
@@ -21,7 +23,7 @@ class MJFairPage extends StatefulWidget {
 class _MJFairPageState extends State<MJFairPage>
     with SingleTickerProviderStateMixin {
   TabController _tabbarController;
-  List<String> tabs = ["资讯", "技术"];
+  List<String> tabs = ["动态", "文章", "帖子"];
   ScrollController _scrollController = ScrollController();
   double navAlpha = 0;
 
@@ -33,7 +35,7 @@ class _MJFairPageState extends State<MJFairPage>
         TabController(vsync: this, initialIndex: 0, length: tabs.length);
     _scrollController.addListener(() {
       var offset = _scrollController.offset;
-      print(offset);
+      // print(offset);
       if (offset < 0) {
         if (navAlpha != 0) {
           setState(() {
@@ -131,25 +133,19 @@ class _MJFairPageState extends State<MJFairPage>
         return [
           SliverAppBar(
             automaticallyImplyLeading: false,
-            expandedHeight: 230.0,
+            backgroundColor: Colors.white,
+            expandedHeight: 250.0,
+            elevation: 0, // 隐藏底部分割线
             brightness:
                 navAlpha > 0.5 ? Brightness.light : Brightness.dark, //修改状态栏颜色
             pinned: true,
-            flexibleSpace: Padding(
-              padding: EdgeInsets.symmetric(vertical: 0),
-              child: PageView(
-                children: [
-                  Container(
-                    child: Image.asset("assets/images/default_icon.png",
-                        fit: BoxFit.cover),
-                  ),
-                  Container(
-                    child: Image.asset("assets/images/default_icon.png",
-                        fit: BoxFit.cover),
-                  ),
-                ],
-              ),
-            ),
+            flexibleSpace: FlexibleSpaceBar(background: FailHeader()),
+            // FlexibleSpaceBar(
+            //   background: Image.asset(
+            //     "assets/images/default_icon.png",
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
           ),
           SliverPersistentHeader(
             pinned: true,
@@ -157,10 +153,9 @@ class _MJFairPageState extends State<MJFairPage>
               child: TabBar(
                 controller: _tabbarController,
                 labelColor: Colors.black,
-                tabs: <Widget>[
-                  Tab(text: tabs[0]),
-                  Tab(text: tabs[1]),
-                ],
+                tabs: tabs.map((e) {
+                  return Tab(text: e);
+                }).toList(),
               ),
             ),
           ),
@@ -168,35 +163,10 @@ class _MJFairPageState extends State<MJFairPage>
       },
       body: TabBarView(
         controller: _tabbarController,
-        children: [
-          HomeListView2(title: tabs[0]),
-          HomeListView2(title: tabs[1]),
-        ],
+        children: tabs.map((e) {
+          return HomeListView2(title: e);
+        }).toList(),
       ),
-    );
-  }
-}
-
-// 动态创建
-class HomeListView2 extends StatelessWidget {
-  final String title;
-  HomeListView2({this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return MediaQuery.removePadding(
-      removeTop: true,
-      context: context,
-      child: ListView.builder(
-          itemExtent: 60, // 每一个item的高度
-          itemCount: 15,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text("$title ${index + 1}"),
-              subtitle: Text("this is a description"),
-              leading: Icon(Icons.account_box),
-            );
-          }),
     );
   }
 }
@@ -210,7 +180,7 @@ class StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      color: Theme.of(context).backgroundColor,
+      color: Colors.white,
       child: this.child,
     );
   }

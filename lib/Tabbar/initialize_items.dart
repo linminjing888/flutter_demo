@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-07 09:49:15
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-09 11:10:04
+ * @LastEditTime: 2020-12-09 14:07:04
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -23,6 +23,6 @@ import 'package:flutter_demo/Home/HomeList/home_page.dart';
 List<Widget> pages = [
   MJHomePage(),
   MJGroupPage(),
-  MJGroupPage(),
+  MJFairPage(),
   MJMePage(),
 ];
