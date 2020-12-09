@@ -3,10 +3,11 @@
  * @version: 
  * @Date: 2020-12-07 15:01:24
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-08 17:28:56
+ * @LastEditTime: 2020-12-09 10:57:45
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/Fair/fail_page.dart';
 import 'package:flutter_demo/Home/SearchList/app_search_page.dart';
 import 'package:flutter_demo/Me/web_page.dart';
 import 'package:flutter_demo/splash_screen.dart';
@@ -26,6 +27,7 @@ class MJRouter {
     MJSharePage.routeName: (ctx) => MJSharePage(),
     MJLoginPage.routeName: (ctx) => MJLoginPage(),
     MJThemeColorPage.routeName: (ctx) => MJThemeColorPage(),
+    MJFairPage.routeName: (ctx) => MJFairPage(),
   };
 
   static final String initialRoute = SplashScreen.routeName;

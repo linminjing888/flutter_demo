@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/Fair/fail_page.dart';
 import 'package:flutter_demo/Widgets/Circle.dart';
 import 'package:flutter_demo/Widgets/dashed_line.dart';
 import 'package:flutter_demo/Home/HomeList/home_model.dart';
@@ -15,6 +16,7 @@ class MovieWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         print("${movie.rank}");
+        Navigator.of(context).pushNamed(MJFairPage.routeName);
       },
       child: Container(
         padding: EdgeInsets.all(10),

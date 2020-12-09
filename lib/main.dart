@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-07 09:49:15
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-08 16:28:08
+ * @LastEditTime: 2020-12-09 11:18:11
  * @Descripttion: 
  */
 import 'package:flutter/cupertino.dart';
@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
         // 去除全局水波纹效果
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
+        // visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: MJRouter.initialRoute,
       routes: MJRouter.routes,
