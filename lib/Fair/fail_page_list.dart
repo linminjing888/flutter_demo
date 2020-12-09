@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-09 14:14:50
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-09 14:14:51
+ * @LastEditTime: 2020-12-09 15:40:42
  * @Descripttion: 
  */
 // 动态创建
@@ -19,6 +19,7 @@ class HomeListView2 extends StatelessWidget {
       removeTop: true,
       context: context,
       child: ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
           itemExtent: 60, // 每一个item的高度
           itemCount: 15,
           itemBuilder: (context, index) {

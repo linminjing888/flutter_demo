@@ -20,7 +20,7 @@ import 'package:flutter_demo/Home/HomeList/home_page.dart';
 //   MJBottomBarItem("我的", "profile"),
 // ];
 
-List<Widget> pages = [
+final List<Widget> pages = [
   MJHomePage(),
   MJGroupPage(),
   MJFairPage(),

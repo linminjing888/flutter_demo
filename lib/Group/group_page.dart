@@ -3,21 +3,58 @@
  * @version: 
  * @Date: 2020-12-07 09:49:15
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-08 16:35:23
+ * @LastEditTime: 2020-12-09 16:11:57
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/generated/l10n.dart';
 
 class MJGroupPage extends StatelessWidget {
+  final List<String> _tabTitles = ["精选", "女生", "男生", "漫画"];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).group),
-        automaticallyImplyLeading: false,
-      ),
-      body: Container(),
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text(S.of(context).group),
+            automaticallyImplyLeading: false,
+            elevation: 0,
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(48),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: TabBar(
+                  labelColor: Colors.white,
+                  labelStyle:
+                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  indicatorColor: Colors.white,
+                  indicatorSize: TabBarIndicatorSize.label,
+                  indicatorPadding: EdgeInsets.fromLTRB(2, 0, 2, 5),
+                  tabs: _tabTitles.map((e) {
+                    return Tab(text: e);
+                  }).toList(),
+                ),
+              ),
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              Center(
+                child: Text("漫画"),
+              ),
+              Center(
+                child: Text("漫画"),
+              ),
+              Center(
+                child: Text("漫画"),
+              ),
+              Center(
+                child: Text("漫画"),
+              ),
+            ],
+          )),
     );
   }
 }

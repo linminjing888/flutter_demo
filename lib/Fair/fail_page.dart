@@ -3,12 +3,12 @@
  * @version: 
  * @Date: 2020-12-08 16:38:39
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-09 15:03:21
+ * @LastEditTime: 2020-12-09 15:33:35
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_demo/Fair/fail_detail_list.dart';
+import 'package:flutter_demo/Fair/fail_page_list.dart';
 import 'package:flutter_demo/Fair/fail_page_header.dart';
 import 'package:flutter_demo/Support/mj_screen.dart';
 import 'package:flutter_demo/generated/l10n.dart';
@@ -79,15 +79,20 @@ class _MJFairPageState extends State<MJFairPage>
     return Stack(
       children: [
         Container(
-            width: 44,
+            // width: 44,
             height: MJScreen.navigationBarHeight,
             padding: EdgeInsets.fromLTRB(5, MJScreen.topSafeHeight, 0, 0),
-            child: IconButton(
-              icon: Icon(
-                Icons.arrow_back_ios,
-                color: Colors.white,
-              ),
-              onPressed: () {},
+            child: Row(
+              children: [
+                Expanded(child: Container()),
+                IconButton(
+                  icon: Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {},
+                ),
+              ],
             )),
         Opacity(
           opacity: navAlpha,
@@ -97,16 +102,7 @@ class _MJFairPageState extends State<MJFairPage>
             height: MJScreen.navigationBarHeight,
             child: Row(
               children: [
-                Container(
-                  width: 44,
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.black,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
+                Container(width: 44),
                 Expanded(
                   child: Text(
                     S.of(context).fair,
@@ -117,7 +113,16 @@ class _MJFairPageState extends State<MJFairPage>
                     textAlign: TextAlign.center,
                   ),
                 ),
-                Container(width: 44),
+                Container(
+                  width: 44,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
               ],
             ),
           ),

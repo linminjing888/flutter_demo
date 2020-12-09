@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-11-24 16:19:43
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-07 15:42:20
+ * @LastEditTime: 2020-12-09 16:05:40
  * @Descripttion: 搜索页面
  */
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class MJSearchPage extends StatefulWidget {
 }
 
 class _MJSearchPageState extends State<MJSearchPage> {
-  List<String> _searchData = SearchData().searchData;
+  List<String> _searchData = searchDataList;
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +54,8 @@ class _MJSearchPageState extends State<MJSearchPage> {
 
   void _setupSearchData(String value) {
     setState(() {
-      _searchData = SearchData()
-          .searchData
-          .where((element) => element.contains(value))
-          .toList();
+      _searchData =
+          searchDataList.where((element) => element.contains(value)).toList();
     });
   }
 

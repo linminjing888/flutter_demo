@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-07 15:49:11
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-08 17:53:44
+ * @LastEditTime: 2020-12-09 15:58:45
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -72,6 +72,7 @@ class _MJContentListState extends State<MJContentList> {
     return Container(
       height: height - 100,
       child: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
         itemCount: meTitleList.length + 1,
         itemBuilder: (context, index) {
           if (index == 0) {
