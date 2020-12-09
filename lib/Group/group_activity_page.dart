@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/Group/group_bander.dart';
 import 'package:flutter_demo/Group/group_menu.dart';
 import 'package:flutter_demo/Group/group_model.dart';
-import 'package:flutter_demo/Group/novel_four_view.dart';
+import 'package:flutter_demo/Group/group_novel_cell.dart';
 import 'package:flutter_demo/Request/request.dart';
 import 'package:flutter_demo/Support/mj_toast.dart';
 
@@ -20,8 +20,7 @@ class MJActivityPage extends StatefulWidget {
 }
 
 class _MJActivityPageState extends State<MJActivityPage> {
-  List<CarouselInfo> carouselInfos = [];
-  List<DataModel> modules = [];
+  DataModel dataModel;
 
   @override
   void initState() {
@@ -32,15 +31,11 @@ class _MJActivityPageState extends State<MJActivityPage> {
   Future<void> _fetchData() async {
     try {
       var responseJson = await Request.get(action: "books");
-      List moduleData = responseJson["module"];
-      List<DataModel> models = [];
-      moduleData.forEach((element) {
-        models.add(DataModel.fromJson(element));
-      });
+
+      DataModel dataModel = DataModel.fromJson(responseJson);
 
       setState(() {
-        this.modules = models;
-        this.carouselInfos = carouselInfos;
+        this.dataModel = dataModel;
       });
     } catch (e) {
       MJToast.show(e.toString());
@@ -50,32 +45,19 @@ class _MJActivityPageState extends State<MJActivityPage> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: modules.length,
+      itemCount: dataModel.books.length + 2,
       itemBuilder: (context, index) {
-        return _buildModule(modules[index]);
+        return _buildModule(index);
       },
     );
   }
 
-  Widget _buildModule(DataModel model) {
-    if (model.carousels != null) {
-      return DataBander(model.carousels);
-    } else if (model.menus != null) {
-      return DataMenu(model.menus);
-    } else if (model.books != null) {
-      return _bookCardInfo(model);
+  Widget _buildModule(int index) {
+    if (index == 0) {
+      return DataBander(dataModel.carousels);
+    } else if (index == 1) {
+      return DataMenu(dataModel.menus);
     }
-    return Container();
-  }
-
-  Widget _bookCardInfo(DataModel module) {
-    Widget card;
-    switch (module.style) {
-      case 4:
-        card = NovelNormalView(module);
-        break;
-      default:
-    }
-    return card;
+    return NovelBookCell(dataModel.books[index - 2]);
   }
 }

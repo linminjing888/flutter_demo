@@ -10,39 +10,25 @@
 import 'package:flutter_demo/Group/group_novel_model.dart';
 
 class DataModel {
-  String id;
-  String name;
-  int style;
-  List content;
-
   List<CarouselInfo> carousels;
   List<MenuInfo> menus;
   List<Novel> books;
 
   DataModel.fromJson(Map data) {
-    id = data["id"];
-    name = data["m_s_name"];
-    content = data["content"];
+    carousels = [];
+    data["banner"].forEach((element) {
+      carousels.add(CarouselInfo.fromJson(element));
+    });
 
-    if (name == "banner") {
-      carousels = [];
-      content.forEach((element) {
-        carousels.add(CarouselInfo.fromJson(element));
-      });
-    }
-    if (name == "menu") {
-      menus = [];
-      content.forEach((element) {
-        menus.add(MenuInfo.fromJson(element));
-      });
-    }
-    if (data["m_s_style"] != null) {
-      style = data["m_s_style"];
-      books = [];
-      content.forEach((element) {
-        books.add(Novel.fromJson(element));
-      });
-    }
+    menus = [];
+    data["menu"].forEach((element) {
+      menus.add(MenuInfo.fromJson(element));
+    });
+
+    books = [];
+    data["book"].forEach((element) {
+      books.add(Novel.fromJson(element));
+    });
   }
 }
 
