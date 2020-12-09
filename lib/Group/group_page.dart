@@ -3,14 +3,15 @@
  * @version: 
  * @Date: 2020-12-07 09:49:15
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-09 16:11:57
+ * @LastEditTime: 2020-12-09 18:01:28
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/Group/group_activity_page.dart';
 import 'package:flutter_demo/generated/l10n.dart';
 
 class MJGroupPage extends StatelessWidget {
-  final List<String> _tabTitles = ["精选", "女生", "男生", "漫画"];
+  final List<String> _tabTitles = ["活动", "推荐", "专题", "连载"];
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +42,8 @@ class MJGroupPage extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              Center(
-                child: Text("漫画"),
-              ),
-              Center(
-                child: Text("漫画"),
-              ),
+              MJActivityPage(),
+              MJActivityPage(),
               Center(
                 child: Text("漫画"),
               ),
