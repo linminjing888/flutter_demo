@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-10 10:49:06
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-10 12:44:28
+ * @LastEditTime: 2020-12-10 14:49:53
  * @Descripttion: 
  */
 /*
@@ -15,11 +15,12 @@
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/Group/group_bander.dart';
-import 'package:flutter_demo/Group/group_commend_cell.dart';
-import 'package:flutter_demo/Group/group_menu.dart';
-import 'package:flutter_demo/Group/group_model.dart';
-import 'package:flutter_demo/Group/group_activity_cell.dart';
+import 'package:flutter_demo/Group/Model/group_novel_model.dart';
+import 'package:flutter_demo/Group/Views/group_bander.dart';
+import 'package:flutter_demo/Group/Views/group_commend_cell.dart';
+import 'package:flutter_demo/Group/Views/group_menu.dart';
+import 'package:flutter_demo/Group/Model/group_model.dart';
+import 'package:flutter_demo/Group/Views/group_activity_cell.dart';
 import 'package:flutter_demo/Request/request.dart';
 import 'package:flutter_demo/Support/mj_toast.dart';
 
@@ -29,7 +30,9 @@ class MJRecommendPage extends StatefulWidget {
 }
 
 class _MJRecommendPageState extends State<MJRecommendPage> {
-  DataModel dataModel;
+  List<CarouselInfo> _carouselInfos = [];
+  List<MenuInfo> _menus = [];
+  List<Novel> _books = [];
 
   @override
   void initState() {
@@ -44,7 +47,9 @@ class _MJRecommendPageState extends State<MJRecommendPage> {
       DataModel dataModel = DataModel.fromJson(responseJson);
 
       setState(() {
-        this.dataModel = dataModel;
+        this._carouselInfos = dataModel.carousels;
+        this._menus = dataModel.menus;
+        this._books = dataModel.books;
       });
     } catch (e) {
       MJToast.show(e.toString());
@@ -59,8 +64,8 @@ class _MJRecommendPageState extends State<MJRecommendPage> {
         SliverToBoxAdapter(
           child: Column(
             children: [
-              DataBander(dataModel.carousels),
-              DataMenu(dataModel.menus),
+              DataBander(_carouselInfos),
+              DataMenu(_menus),
             ],
           ),
         ),
@@ -68,7 +73,7 @@ class _MJRecommendPageState extends State<MJRecommendPage> {
         SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 15),
           sliver: SliverGrid.count(
-            children: dataModel.books.map((e) {
+            children: _books.map((e) {
               return NovelCommendCell(e);
             }).toList(),
             crossAxisCount: 3,

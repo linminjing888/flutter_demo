@@ -3,11 +3,11 @@
  * @version: 
  * @Date: 2020-12-09 17:51:50
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-09 17:59:02
+ * @LastEditTime: 2020-12-10 14:46:25
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/Group/group_model.dart';
+import 'package:flutter_demo/Group/Model/group_model.dart';
 
 class DataMenu extends StatelessWidget {
   final List<MenuInfo> infos;
@@ -15,6 +15,9 @@ class DataMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (infos.length == 0) {
+      return SizedBox();
+    }
     return Container(
       color: Colors.white,
       padding: EdgeInsets.symmetric(vertical: 10),

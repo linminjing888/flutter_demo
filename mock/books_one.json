@@ -20,6 +20,13 @@
         "link_url": "",
         "image_url": "http:\/\/img-tailor.11222.cn\/pm\/book\/operate\/2019010411005413.jpg",
         "type": "book"
+      },
+      {
+        "link_text": "曾国藩传",
+        "link_url": "app:openAppBookCover?{\"bookId\":\"7842790\", \"topClass\": \"503\"}",
+        "image_url": "http:\/\/img-tailor.11222.cn\/pm\/book\/operate\/2019010321241999.jpg",
+        "type": "word",
+        "reason": "#2b2726"
       }
     ],
     "menu": [

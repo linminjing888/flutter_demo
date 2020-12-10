@@ -7,8 +7,8 @@
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/Group/group_novel_image.dart';
-import 'package:flutter_demo/Group/group_novel_model.dart';
+import 'package:flutter_demo/Group/Views/group_novel_image.dart';
+import 'package:flutter_demo/Group/Model/group_novel_model.dart';
 import 'package:flutter_demo/Support/mj_color.dart';
 
 class NovelActivityCell extends StatelessWidget {

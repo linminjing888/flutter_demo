@@ -3,12 +3,12 @@
  * @version: 
  * @Date: 2020-12-09 17:03:28
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-09 17:51:28
+ * @LastEditTime: 2020-12-10 14:45:42
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_demo/Group/group_model.dart';
+import 'package:flutter_demo/Group/Model/group_model.dart';
 
 class DataBander extends StatefulWidget {
   final List<CarouselInfo> imgList;
