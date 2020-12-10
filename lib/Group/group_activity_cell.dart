@@ -11,9 +11,9 @@ import 'package:flutter_demo/Group/group_novel_image.dart';
 import 'package:flutter_demo/Group/group_novel_model.dart';
 import 'package:flutter_demo/Support/mj_color.dart';
 
-class NovelBookCell extends StatelessWidget {
+class NovelActivityCell extends StatelessWidget {
   final Novel novel;
-  NovelBookCell(this.novel);
+  NovelActivityCell(this.novel);
 
   @override
   Widget build(BuildContext context) {

@@ -1,25 +1,34 @@
 /*
  * @Author: lin minjing
  * @version: 
+ * @Date: 2020-12-10 10:49:06
+ * @LastEditors: lin minjing
+ * @LastEditTime: 2020-12-10 12:44:28
+ * @Descripttion: 
+ */
+/*
+ * @Author: lin minjing
+ * @version: 
  * @Date: 2020-12-09 17:24:19
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-10 11:37:57
+ * @LastEditTime: 2020-12-09 18:13:57
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/Group/group_bander.dart';
+import 'package:flutter_demo/Group/group_commend_cell.dart';
 import 'package:flutter_demo/Group/group_menu.dart';
 import 'package:flutter_demo/Group/group_model.dart';
 import 'package:flutter_demo/Group/group_activity_cell.dart';
 import 'package:flutter_demo/Request/request.dart';
 import 'package:flutter_demo/Support/mj_toast.dart';
 
-class MJActivityPage extends StatefulWidget {
+class MJRecommendPage extends StatefulWidget {
   @override
-  _MJActivityPageState createState() => _MJActivityPageState();
+  _MJRecommendPageState createState() => _MJRecommendPageState();
 }
 
-class _MJActivityPageState extends State<MJActivityPage> {
+class _MJRecommendPageState extends State<MJRecommendPage> {
   DataModel dataModel;
 
   @override
@@ -30,7 +39,7 @@ class _MJActivityPageState extends State<MJActivityPage> {
 
   Future<void> _fetchData() async {
     try {
-      var responseJson = await Request.get(action: "books_one");
+      var responseJson = await Request.get(action: "books_two");
 
       DataModel dataModel = DataModel.fromJson(responseJson);
 
@@ -55,16 +64,19 @@ class _MJActivityPageState extends State<MJActivityPage> {
             ],
           ),
         ),
-        // SliverList 高度自动, SliverFixedExtentList 高度固定死.
-        SliverFixedExtentList(
-          itemExtent: 125,
-          delegate: SliverChildBuilderDelegate(
-            (context, int index) {
-              return NovelActivityCell(dataModel.books[index]);
-            },
-            childCount: dataModel.books.length,
+
+        SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          sliver: SliverGrid.count(
+            children: dataModel.books.map((e) {
+              return NovelCommendCell(e);
+            }).toList(),
+            crossAxisCount: 3,
+            crossAxisSpacing: 15,
+            mainAxisSpacing: 15,
+            childAspectRatio: 0.55,
           ),
-        ),
+        )
       ],
     );
   }

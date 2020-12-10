@@ -3,10 +3,11 @@
  * @version: 
  * @Date: 2020-12-07 09:49:15
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-09 18:01:28
+ * @LastEditTime: 2020-12-10 10:53:10
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/Group/group_%20recommend_page.dart';
 import 'package:flutter_demo/Group/group_activity_page.dart';
 import 'package:flutter_demo/generated/l10n.dart';
 
@@ -43,7 +44,7 @@ class MJGroupPage extends StatelessWidget {
           body: TabBarView(
             children: [
               MJActivityPage(),
-              MJActivityPage(),
+              MJRecommendPage(),
               Center(
                 child: Text("漫画"),
               ),
