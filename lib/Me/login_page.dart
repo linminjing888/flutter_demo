@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/Request/request.dart';
-import 'package:flutter_demo/Support/mj_color.dart';
 import 'package:flutter_demo/Support/mj_toast.dart';
 import 'package:flutter_demo/Support/user_manager.dart';
+
+/// 登录按钮状态
+enum ButtonStatus {
+  none,
+  loading,
+  done,
+}
 
 class MJLoginPage extends StatefulWidget {
   static const String routeName = "/login";
@@ -12,19 +18,23 @@ class MJLoginPage extends StatefulWidget {
 }
 
 class _MJLoginPageState extends State<MJLoginPage> {
-  TextEditingController phoneEdit = TextEditingController();
-  TextEditingController passwordEdit = TextEditingController();
+  TextEditingController _phoneEdit = TextEditingController();
+  TextEditingController _passwordEdit = TextEditingController();
+  ButtonStatus _buttonStatus = ButtonStatus.none;
 
   loginAction() async {
-    if (phoneEdit.text.length == 0) {
+    if (_phoneEdit.text.length == 0) {
       MJToast.show("请输入用户名");
-    } else if (passwordEdit.text.length == 0) {
+    } else if (_passwordEdit.text.length == 0) {
       MJToast.show("请输入密码");
     } else {
       // print("user:${phoneEdit.text} psw:${passwordEdit.text}");
+      setState(() {
+        _buttonStatus = ButtonStatus.loading;
+      });
 
-      var phone = phoneEdit.text;
-      var psw = passwordEdit.text;
+      var phone = _phoneEdit.text;
+      var psw = _passwordEdit.text;
       try {
         var response = await Request.post(action: "login", params: {
           "phone": phone,
@@ -32,8 +42,13 @@ class _MJLoginPageState extends State<MJLoginPage> {
         });
         UserManager.instance.login(response);
 
-        Navigator.pop(context);
-        MJToast.show("登陆成功");
+        Future.delayed(Duration(seconds: 1), () {
+          setState(() {
+            _buttonStatus = ButtonStatus.done;
+          });
+          Navigator.pop(context);
+          // MJToast.show("登陆成功");
+        });
       } catch (e) {
         MJToast.show(e.toString());
       }
@@ -84,7 +99,7 @@ class _MJLoginPageState extends State<MJLoginPage> {
   Widget _buildPhone() {
     return Container(
       child: TextField(
-        controller: phoneEdit,
+        controller: _phoneEdit,
         decoration: InputDecoration(
           hintText: "请输入您的用户名",
           hintStyle: TextStyle(color: Colors.black26),
@@ -108,7 +123,7 @@ class _MJLoginPageState extends State<MJLoginPage> {
   Widget _buildPassword() {
     return Container(
       child: TextField(
-        controller: passwordEdit,
+        controller: _passwordEdit,
         decoration: InputDecoration(
           hintText: "请输入您的密码",
           hintStyle: TextStyle(color: Colors.black26),
@@ -133,12 +148,30 @@ class _MJLoginPageState extends State<MJLoginPage> {
       ),
       height: 45,
       child: FlatButton(
-          onPressed: loginAction,
-          child: Text(
-            "登录",
-            style: TextStyle(color: Colors.white, fontSize: 18),
-          )),
+        onPressed: loginAction,
+        child: _buildLoginChild(),
+      ),
     );
+  }
+
+  Widget _buildLoginChild() {
+    if (_buttonStatus == ButtonStatus.none) {
+      return Text(
+        "登录",
+        style: TextStyle(color: Colors.white, fontSize: 18),
+      );
+    } else if (_buttonStatus == ButtonStatus.loading) {
+      return CircularProgressIndicator(
+        backgroundColor: Colors.white,
+        strokeWidth: 2,
+      );
+    } else if (_buttonStatus == ButtonStatus.done) {
+      return Icon(
+        Icons.check,
+        color: Colors.white,
+      );
+    }
+    return Container();
   }
 
   Widget _buildRegister() {
