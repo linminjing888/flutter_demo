@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-10 10:49:06
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-10 14:49:53
+ * @LastEditTime: 2020-12-10 17:07:00
  * @Descripttion: 
  */
 /*
@@ -29,7 +29,8 @@ class MJRecommendPage extends StatefulWidget {
   _MJRecommendPageState createState() => _MJRecommendPageState();
 }
 
-class _MJRecommendPageState extends State<MJRecommendPage> {
+class _MJRecommendPageState extends State<MJRecommendPage>
+    with AutomaticKeepAliveClientMixin {
   List<CarouselInfo> _carouselInfos = [];
   List<MenuInfo> _menus = [];
   List<Novel> _books = [];
@@ -37,6 +38,7 @@ class _MJRecommendPageState extends State<MJRecommendPage> {
   @override
   void initState() {
     super.initState();
+    print("222");
     _fetchData();
   }
 
@@ -55,6 +57,10 @@ class _MJRecommendPageState extends State<MJRecommendPage> {
       MJToast.show(e.toString());
     }
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {

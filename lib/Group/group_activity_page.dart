@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-09 17:24:19
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-10 14:48:41
+ * @LastEditTime: 2020-12-10 17:05:46
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -20,7 +20,8 @@ class MJActivityPage extends StatefulWidget {
   _MJActivityPageState createState() => _MJActivityPageState();
 }
 
-class _MJActivityPageState extends State<MJActivityPage> {
+class _MJActivityPageState extends State<MJActivityPage>
+    with AutomaticKeepAliveClientMixin {
   List<CarouselInfo> _carouselInfos = [];
   List<MenuInfo> _menus = [];
   List<Novel> _books = [];
@@ -29,6 +30,7 @@ class _MJActivityPageState extends State<MJActivityPage> {
   void initState() {
     super.initState();
     _fetchData();
+    print("111");
   }
 
   Future<void> _fetchData() async {
@@ -46,6 +48,10 @@ class _MJActivityPageState extends State<MJActivityPage> {
       MJToast.show(e.toString());
     }
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
