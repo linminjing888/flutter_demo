@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-09 17:24:19
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-10 17:05:46
+ * @LastEditTime: 2020-12-10 17:46:18
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -30,7 +30,6 @@ class _MJActivityPageState extends State<MJActivityPage>
   void initState() {
     super.initState();
     _fetchData();
-    print("111");
   }
 
   Future<void> _fetchData() async {
@@ -50,7 +49,6 @@ class _MJActivityPageState extends State<MJActivityPage>
   }
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 
   @override

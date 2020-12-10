@@ -3,7 +3,7 @@
  * @version: 
  * @Date: 2020-12-10 10:49:06
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-10 17:07:00
+ * @LastEditTime: 2020-12-10 17:46:29
  * @Descripttion: 
  */
 /*
@@ -38,7 +38,7 @@ class _MJRecommendPageState extends State<MJRecommendPage>
   @override
   void initState() {
     super.initState();
-    print("222");
+
     _fetchData();
   }
 
@@ -59,7 +59,6 @@ class _MJRecommendPageState extends State<MJRecommendPage>
   }
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 
   @override
