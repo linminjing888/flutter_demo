@@ -9,6 +9,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/Group/group_%20recommend_page.dart';
 import 'package:flutter_demo/Group/group_activity_page.dart';
+import 'package:flutter_demo/Group/group_subject_page.dart';
 import 'package:flutter_demo/generated/l10n.dart';
 
 class MJGroupPage extends StatelessWidget {
@@ -45,9 +46,7 @@ class MJGroupPage extends StatelessWidget {
             children: [
               MJActivityPage(),
               MJRecommendPage(),
-              Center(
-                child: Text("漫画"),
-              ),
+              MJGroupFailPage(),
               Center(
                 child: Text("漫画"),
               ),

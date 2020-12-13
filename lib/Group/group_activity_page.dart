@@ -53,6 +53,7 @@ class _MJActivityPageState extends State<MJActivityPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return CustomScrollView(
       slivers: [
         // 如果不是Sliver家族的Widget，需要使用SliverToBoxAdapter做层包裹

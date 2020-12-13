@@ -47,12 +47,16 @@ class _MJRecommendPageState extends State<MJRecommendPage>
       var responseJson = await Request.get(action: "books_two");
 
       DataModel dataModel = DataModel.fromJson(responseJson);
-
-      setState(() {
-        this._carouselInfos = dataModel.carousels;
-        this._menus = dataModel.menus;
-        this._books = dataModel.books;
-      });
+      // 解决 setState() called after diapose()
+      // 网络请求成功前退出了页面，该 State 被从对象树卸载掉，
+      // 而这时回调了网络请求的方法，方法中带有 setState 的调用，也就导致了该问题。
+      if (mounted) {
+        setState(() {
+          this._carouselInfos = dataModel.carousels;
+          this._menus = dataModel.menus;
+          this._books = dataModel.books;
+        });
+      }
     } catch (e) {
       MJToast.show(e.toString());
     }
@@ -63,6 +67,7 @@ class _MJRecommendPageState extends State<MJRecommendPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return CustomScrollView(
       slivers: [
         // 如果不是Sliver家族的Widget，需要使用SliverToBoxAdapter做层包裹
