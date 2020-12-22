@@ -3,12 +3,13 @@
  * @version: 
  * @Date: 2020-12-07 09:49:15
  * @LastEditors: lin minjing
- * @LastEditTime: 2020-12-10 10:53:10
+ * @LastEditTime: 2020-12-22 15:48:09
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/Group/group_%20recommend_page.dart';
 import 'package:flutter_demo/Group/group_activity_page.dart';
+import 'package:flutter_demo/Group/group_slidable_page.dart';
 import 'package:flutter_demo/Group/group_subject_page.dart';
 import 'package:flutter_demo/generated/l10n.dart';
 
@@ -47,9 +48,7 @@ class MJGroupPage extends StatelessWidget {
               MJActivityPage(),
               MJRecommendPage(),
               MJGroupFailPage(),
-              Center(
-                child: Text("漫画"),
-              ),
+              MJGroupSlidablePage(),
             ],
           )),
     );
