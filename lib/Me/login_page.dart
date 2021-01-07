@@ -68,7 +68,7 @@ class _MJLoginPageState extends State<MJLoginPage> {
             children: [
               SizedBox(height: 40),
               Image.asset(
-                "assets/images/login_icon@2x.png",
+                "assets/images/top_bg.jpg",
                 height: 100,
               ),
               SizedBox(height: 20),
